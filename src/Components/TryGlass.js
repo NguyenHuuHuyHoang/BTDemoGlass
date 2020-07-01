@@ -92,8 +92,7 @@ export default class TryGlass extends Component {
             style={{ cursor: "pointer" }}
             className="w-100"
             src={Product.url}
-            alt=""
-            srcset=""
+            alt={Product.name}
           />
         </div>
       );
@@ -120,10 +119,10 @@ export default class TryGlass extends Component {
                 <img
                   src="./glassesImage/model.jpg"
                   className="w-100"
-                  alt=""
-                  srcset=""
+                  alt="Model"
+                  
                 />
-                <img src="./glassesImage/v8.png" alt="" srcset="" style={{
+                <img src="./glassesImage/v8.png" alt="ProductName"  style={{
                     top: '30%',
                     left:'25%'
                 }}className="position-absolute w-50"/>

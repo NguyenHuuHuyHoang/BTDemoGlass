@@ -86,34 +86,40 @@ export default class TryGlass extends Component {
   ];
 
   state = {
-      glassChosen : {},
-      isDemoDisplay : "d-none"
-  }
+    glassChosen: {},
+    isDemoDisplay: "d-none",
+  };
 
   renderListGlasses = () => {
     return this.arrProduct.map((Product, index) => {
       return (
-        <div className="col-4 mb-5" key={index}>
-          <img
-            style={{ cursor: "pointer" }}
-            className="w-100"
-            src={Product.url}
-            alt={Product.name}
-          />
+        <div
+          className="col-4 mb-5"
+          key={index}
+          style={{ cursor: "pointer" }}
+          onClick={() => {
+            this.ChooseGlass(Product.id);
+          }}
+        >
+          <img className="w-100" src={Product.url} alt={Product.name} />
         </div>
       );
     });
   };
 
-  ChooseGlass = id => {
-
-  }
+  ChooseGlass = (id) => {
+    let index = this.arrProduct.findIndex((product) => product.id === id);
+    this.setState({
+      glassChosen: this.arrProduct[index],
+      isDemoDisplay: "d-block",
+    });
+  };
 
   DisplayDemo = (show = true) => {
-    this.setState ({
-        isDemoDisplay : show  ? "d-block" : "d-none"
-    })
-  }
+    this.setState({
+      isDemoDisplay: show ? "d-block" : "d-none",
+    });
+  };
 
   render() {
     return (
@@ -127,7 +133,11 @@ export default class TryGlass extends Component {
               <div className="row">{this.renderListGlasses()}</div>
             </div>
             <div className="col-4 shadow">
-                <GlassDemo DisplayDemo={this.DisplayDemo} isDemoDisplay={this.state.isDemoDisplay} glassChosen={this.state.glassChosen}/>
+              <GlassDemo
+                DisplayDemo={this.DisplayDemo}
+                isDemoDisplay={this.state.isDemoDisplay}
+                glassChosen={this.state.glassChosen}
+              />
             </div>
           </div>
         </div>

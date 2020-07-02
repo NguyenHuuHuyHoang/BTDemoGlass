@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import GlassDemo from "./GlassDemo";
 
 export default class TryGlass extends Component {
   arrProduct = [
@@ -8,7 +9,7 @@ export default class TryGlass extends Component {
       name: "GUCCI G8850U",
       url: "./glassesImage/v1.png",
       desc:
-        "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. ",
+        "Light pink square lenses define these sunglasses, ending with another of pearl effect tip. ",
     },
 
     {
@@ -17,7 +18,7 @@ export default class TryGlass extends Component {
       name: "GUCCI G8759H",
       url: "./glassesImage/v2.png",
       desc:
-        "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. ",
+        "Light pink square lenses define these sunglasses, ending with another of pearl effect tip. ",
     },
 
     {
@@ -26,7 +27,7 @@ export default class TryGlass extends Component {
       name: "DIOR D6700HQ",
       url: "./glassesImage/v3.png",
       desc:
-        "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. ",
+        "Light pink square lenses define these sunglasses, ending with another of pearl effect tip. ",
     },
 
     {
@@ -35,7 +36,7 @@ export default class TryGlass extends Component {
       name: "DIOR D6005U",
       url: "./glassesImage/v4.png",
       desc:
-        "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. ",
+        "Light pink square lenses define these sunglasses, ending with another of pearl effect tip. ",
     },
 
     {
@@ -44,7 +45,7 @@ export default class TryGlass extends Component {
       name: "PRADA P8750",
       url: "./glassesImage/v5.png",
       desc:
-        "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. ",
+        "Light pink square lenses define these sunglasses, ending with another of pearl effect tip. ",
     },
 
     {
@@ -53,7 +54,7 @@ export default class TryGlass extends Component {
       name: "PRADA P9700",
       url: "./glassesImage/v6.png",
       desc:
-        "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. ",
+        "Light pink square lenses define these sunglasses, ending with another of pearl effect tip. ",
     },
 
     {
@@ -62,7 +63,7 @@ export default class TryGlass extends Component {
       name: "FENDI F8750",
       url: "./glassesImage/v7.png",
       desc:
-        "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. ",
+        "Light pink square lenses define these sunglasses, ending with another of pearl effect tip. ",
     },
 
     {
@@ -71,7 +72,7 @@ export default class TryGlass extends Component {
       name: "FENDI F8500",
       url: "./glassesImage/v8.png",
       desc:
-        "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. ",
+        "Light pink square lenses define these sunglasses, ending with another of pearl effect tip. ",
     },
 
     {
@@ -80,9 +81,14 @@ export default class TryGlass extends Component {
       name: "FENDI F4300",
       url: "./glassesImage/v9.png",
       desc:
-        "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. ",
+        "Light pink square lenses define these sunglasses, ending with another of pearl effect tip. ",
     },
   ];
+
+  state = {
+      glassChosen : {},
+      isDemoDisplay : "d-none"
+  }
 
   renderListGlasses = () => {
     return this.arrProduct.map((Product, index) => {
@@ -99,6 +105,16 @@ export default class TryGlass extends Component {
     });
   };
 
+  ChooseGlass = id => {
+
+  }
+
+  DisplayDemo = (show = true) => {
+    this.setState ({
+        isDemoDisplay : show  ? "d-block" : "d-none"
+    })
+  }
+
   render() {
     return (
       <div>
@@ -111,35 +127,7 @@ export default class TryGlass extends Component {
               <div className="row">{this.renderListGlasses()}</div>
             </div>
             <div className="col-4 shadow">
-              <div className="demoModel position-relative">
-                <div className="text-right">
-                  <button className="btn btn-danger  mr-2">Before</button>
-                  <button className="btn btn-danger  ">After</button>
-                </div>
-                <img
-                  src="./glassesImage/model.jpg"
-                  className="w-100"
-                  alt="Model"
-                  
-                />
-                <img src="./glassesImage/v8.png" alt="ProductName"  style={{
-                    top: '30%',
-                    left:'25%'
-                }}className="position-absolute w-50"/>
-                <div className="card productDetail rounded-0">
-                  <div className="card-body text-left">
-                    <h4 className="card-title mb-2 text-light">NATTY ICE</h4>
-                    <span className="mr-2  bg-danger text-light rounded p-1">
-                      $120
-                    </span>
-                    <span className="text-success">Stocking</span>
-                    <p className="card-text mt-3 text-light">
-                      Light pink square lenses define these sunglasses, ending
-                      with amother of pearl effect tip.
-                    </p>
-                  </div>
-                </div>
-              </div>
+                <GlassDemo DisplayDemo={this.DisplayDemo} isDemoDisplay={this.state.isDemoDisplay} glassChosen={this.state.glassChosen}/>
             </div>
           </div>
         </div>
